@@ -9,7 +9,16 @@ public static void main(String[] args) {
     Resource resource=new ClassPathResource("applicationContext.xml");  
     XmlBeanFactory factory=new XmlBeanFactory(resource);  
       
-    Student student=(Student)factory.getBean("studentbean");  
-    student.displayInfo();  
+   // Student student=(Student)factory.getBean("studentbean");  
+    // student.displayInfo(); 
+    
+    //Injecting primitive and string-based values
+    //Dependency Injection by Constructor 
+    Employee s=(Employee)factory.getBean("e");  
+    s.show();
+    
+    //Constructor injection with collection
+    Question q=(Question)factory.getBean("q");  
+    q.displayInfo(); 
 }  
 } 

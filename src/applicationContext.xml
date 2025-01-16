@@ -7,5 +7,75 @@
 <bean id="studentbean" class="com.javaspring.Student">  
 <property name="name" value="Roopam Patekar"></property>  
 </bean>  
+  <bean id="a1" class="com.javaspring.Address">  
+<constructor-arg value="pune"></constructor-arg>  
+<constructor-arg value="Maharashtra"></constructor-arg>  
+<constructor-arg value="India"></constructor-arg>  
+</bean>
   
+<bean id="e" class="com.javaspring.Employee"> 
+<constructor-arg value="10" type="int"></constructor-arg> 
+<constructor-arg value="Spring" ></constructor-arg> 
+<constructor-arg>  
+<ref bean="a1"/>  
+</constructor-arg> 
+</bean>
+<!--for Map collection
+<bean id="ans1" class="com.javaspring.Answer">  
+<constructor-arg value="1"></constructor-arg>  
+<constructor-arg value="Java is a programming language"></constructor-arg>  
+<constructor-arg value="John"></constructor-arg>  
+</bean>  
+--> 
+
+<bean id="answer1" class="com.javaspring.Answer">  
+<constructor-arg value="1"></constructor-arg>  
+<constructor-arg value="Java is a programming language"></constructor-arg>  
+<constructor-arg value="12/12/2001"></constructor-arg>  
+</bean> 
+
+<!--  for map collection
+<bean id="ans2" class="com.javaspring.Answer">  
+<constructor-arg value="2"></constructor-arg>  
+<constructor-arg value="Java is a Platform"></constructor-arg>  
+<constructor-arg value="Ravi"></constructor-arg>  
+</bean>
+-->
+<bean id="answer2" class="com.javaspring.Answer">  
+<constructor-arg value="2"></constructor-arg>  
+<constructor-arg value="Java is a Platform"></constructor-arg>  
+<constructor-arg value="12/12/2003"></constructor-arg>  
+</bean>
+
+<bean id="user1" class="com.javaspring.User">  
+<constructor-arg value="1"></constructor-arg>  
+<constructor-arg value="Arun Kumar"></constructor-arg>  
+<constructor-arg value="arun@gmail.com"></constructor-arg>  
+</bean>  
+<bean id="user2" class="com.javaspring.User">  
+<constructor-arg value="2"></constructor-arg>  
+<constructor-arg value="Varun Kumar"></constructor-arg>  
+<constructor-arg value="Varun@gmail.com"></constructor-arg>  
+</bean>  
+<bean id="q" class="com.javaspring.Question">  
+<constructor-arg value="111"></constructor-arg>  
+<constructor-arg value="What is java?"></constructor-arg>  
+<constructor-arg> 
+<!-- 
+<list> 
+<ref bean="ans1"/>  
+<ref bean="ans2"/>  
+</list> 
+--> 
+<map> 
+<!--collection for Map  
+<entry key="Java is a Programming Language"  value="Ajay Kumar"></entry>  
+<entry key="Java is a Platform" value="John Smith"></entry>  
+<entry key="Java is an Island" value="Raj Kumar"></entry> 
+-->
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>
+</constructor-arg>  
+</bean> 
 </beans> 
