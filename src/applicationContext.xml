@@ -2,17 +2,104 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans  
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<!--SI for Map collection-->
+<bean id="ans1" class="com.javaspring.Answer">  
+<constructor-arg value="1"></constructor-arg>  
+<constructor-arg value="Newyork is in USA"></constructor-arg>  
+<constructor-arg value="Tom"></constructor-arg>  
+</bean>  
+
+<bean id="ans2" class="com.javaspring.Answer">  
+<constructor-arg value="2"></constructor-arg>  
+<constructor-arg value="Newyork's Capital is Albany"></constructor-arg>  
+<constructor-arg value="Dave"></constructor-arg>  
+</bean>
+<bean id="q" class="com.javaspring.Question">  
+<property name="id" value="1"></property>  
+<property name="name" value="Write about Newyork?"></property>  
+<property name="answers">  
+<map>  
+<entry key="Newyork is in USA"  value="Tom"></entry>  
+<entry key="Newyork's Capital is Albany" value="Dave"></entry>  
+</map>  
+</property>  
+</bean> 
+
+<!--Setter Injection with Non-String Collection       
+ <bean id="answer1" class="com.javaspring.Answer">  
+<property name="id" value="1"></property>  
+<property name="name" value="Newyork is in USA"></property>  
+<property name="by" value="Tom"></property>  
+</bean>  
+<bean id="answer2" class="com.javaspring.Answer">  
+<property name="id" value="2"></property>  
+<property name="name" value="Newyork's Capital is Albany"></property>  
+<property name="by" value="Dave"></property>  
+</bean>  
   
+<bean id="q" class="com.javaspring.Question">  
+<property name="id" value="1"></property>  
+<property name="name" value="Write about Newyork?"></property>  
+<property name="answers">  
+<list>  
+<ref bean="answer1"/>  
+<ref bean="answer2"/>  
+</list>  
+</property>  
+</bean>       
+-->
+<!-- SI with String collection 
+<bean id="q" class="com.javaspring.Question">  
+<property name="id" value="1"></property>  
+<property name="name" value="Write about Newyork?"></property>  
+<property name="answers">  
+<list>  
+<value>Newyork is in USA </value>  
+<value>Newyork's Capital is Albany</value>  
+</list>  
+</property>  
+</bean>  
+-->     
+<!--SI dependent Object
+<bean id="address1" class="com.javaspring.Address">  
+<property name="addressLine1" value="51,Park Ave"></property>  
+<property name="city" value="Albany"></property>  
+<property name="state" value="Newyork"></property>  
+<property name="country" value="USA"></property>  
+</bean>  
+  
+<bean id="obj" class="com.javaspring.Employee">  
+<property name="id" value="1"></property>  
+<property name="name" value="Tom Cruise"></property>  
+<property name="address" ref="address1"></property>  
+</bean>  
+ -->
+<!--setter injection
+<bean id="obj" class="com.javaspring.Employee">  
+<property name="id">  
+<value>20</value>  
+</property>  
+<property name="name">  
+<value>Arun</value>  
+</property>  
+<property name="city">  
+<value>Albany</value>  
+</property>   
+</bean>  
+-->
+ <!--spring application 
 <bean id="studentbean" class="com.javaspring.Student">  
 <property name="name" value="Roopam Patekar"></property>  
-</bean>  
+</bean> 
+--> 
+<!--Constructor Injection with Dependent Object
   <bean id="a1" class="com.javaspring.Address">  
 <constructor-arg value="pune"></constructor-arg>  
 <constructor-arg value="Maharashtra"></constructor-arg>  
 <constructor-arg value="India"></constructor-arg>  
 </bean>
-  
+
 <bean id="e" class="com.javaspring.Employee"> 
 <constructor-arg value="10" type="int"></constructor-arg> 
 <constructor-arg value="Spring" ></constructor-arg> 
@@ -20,27 +107,30 @@
 <ref bean="a1"/>  
 </constructor-arg> 
 </bean>
-<!--for Map collection
-<bean id="ans1" class="com.javaspring.Answer">  
-<constructor-arg value="1"></constructor-arg>  
-<constructor-arg value="Java is a programming language"></constructor-arg>  
-<constructor-arg value="John"></constructor-arg>  
-</bean>  
---> 
 
+-->
+<!-- CI inheriting bean
+ <bean id="e1" class="com.javaspring.Employee">  
+<constructor-arg value="101"></constructor-arg>  
+<constructor-arg  value="Tom"></constructor-arg>  
+</bean> 
+<bean id="address1" class="com.javaspring.Address">  
+<constructor-arg value="21,Park Ave"></constructor-arg>  
+<constructor-arg value="Albany"></constructor-arg>  
+<constructor-arg value="Newyork"></constructor-arg>  
+<constructor-arg value="USA"></constructor-arg>  
+</bean>  
+<bean id="e2" class="com.javaspring.Employee" parent="e1">  
+<constructor-arg ref="address1"></constructor-arg>  
+</bean> 
+-->
+<!--Constructor Injection with Non-String Map
 <bean id="answer1" class="com.javaspring.Answer">  
 <constructor-arg value="1"></constructor-arg>  
 <constructor-arg value="Java is a programming language"></constructor-arg>  
 <constructor-arg value="12/12/2001"></constructor-arg>  
 </bean> 
 
-<!--  for map collection
-<bean id="ans2" class="com.javaspring.Answer">  
-<constructor-arg value="2"></constructor-arg>  
-<constructor-arg value="Java is a Platform"></constructor-arg>  
-<constructor-arg value="Ravi"></constructor-arg>  
-</bean>
--->
 <bean id="answer2" class="com.javaspring.Answer">  
 <constructor-arg value="2"></constructor-arg>  
 <constructor-arg value="Java is a Platform"></constructor-arg>  
@@ -61,21 +151,23 @@
 <constructor-arg value="111"></constructor-arg>  
 <constructor-arg value="What is java?"></constructor-arg>  
 <constructor-arg> 
+<map> 
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>
+</constructor-arg>  
+-->
 <!-- 
 <list> 
 <ref bean="ans1"/>  
 <ref bean="ans2"/>  
 </list> 
 --> 
+<!--collection for Map 
 <map> 
-<!--collection for Map  
 <entry key="Java is a Programming Language"  value="Ajay Kumar"></entry>  
 <entry key="Java is a Platform" value="John Smith"></entry>  
 <entry key="Java is an Island" value="Raj Kumar"></entry> 
--->
-<entry key-ref="answer1" value-ref="user1"></entry>  
-<entry key-ref="answer2" value-ref="user2"></entry>  
 </map>
-</constructor-arg>  
-</bean> 
+-->
 </beans> 

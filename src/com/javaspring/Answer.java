@@ -5,32 +5,60 @@ import java.util.Date;
 public class Answer {
 	private int id;  
 	private String name;  
-	//Added for Map collection
-	//private String by;
+	//Added for non String collection
+	private String by;
 	
-	private Date postedDate; 
+	//Added for non map collection
+	//private Date postedDate; 
 	
     public Answer() {
 		
 	}  
 	
-    //constructor for Map collection
-	/*public Answer(int id, String name, String by) {
+    //constructor for non String collection
+	public Answer(int id, String name, String by) {
 		
 		this.id = id;
 		this.name = name;
 		this.by = by;
-	}*/
+	}
 	
 
-   // constructor for non Map collection
-	public Answer(int id, String name, Date postedDate) {
+   public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBy() {
+		return by;
+	}
+
+	public void setBy(String by) {
+		this.by = by;
+	}
+
+	// constructor for String collection
+	/*public Answer(int id, String name, Date postedDate) {
 		
 		this.id = id;
 		this.name = name;
 		this.postedDate = postedDate;
-	}
+	}*/
 	public String toString() {
-		return id+" "+name+" "+postedDate;
+		//Added for  String collection
+		//return id+" "+name+" "+postedDate;
+		//Added for non String collection
+		 return id+" "+name+" "+by;
 	}
 }
