@@ -3,7 +3,57 @@
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans  
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-<!--SI for Map collection-->
+<!--inject dependency by factory method-->
+<bean id="a" class="com.javaspring.A" factory-method="getA"></bean>  
+<!--No Autowiring in Spring
+<bean id="b" class="com.javaspring.B"></bean>  
+<bean id="a" class="com.javaspring.A" autowire="no"></bean> 
+-->
+<!--Autowiring in Spring by Consrtuctor
+<bean id="b" class="com.javaspring.B"></bean>  
+<bean id="a" class="com.javaspring.A" autowire="constructor"></bean> 
+-->  
+ <!--Autowiring in Spring by Type
+<bean id="b" class="com.javaspring.B"></bean>  
+<bean id="a" class="com.javaspring.A" autowire="byType"></bean> 
+ -->       
+ <!--Autowiring in Spring by Name
+<bean id="b" class="com.javaspring.B"></bean>  
+<bean id="a" class="com.javaspring.A" autowire="byName"></bean> 
+-->        
+<!--SI for non String Map collection
+<bean id="answer1" class="com.javaspring.Answer">  
+<property name="id" value="1"></property>  
+<property name="answer" value="Newyork is in USA"></property>  
+<property name="postedDate" value="12/12/2001"></property>  
+</bean> 
+<bean id="answer2" class="com.javaspring.Answer">  
+<property name="id" value="2"></property>  
+<property name="answer" value="Albany is capital of USA"></property>  
+<property name="postedDate" value="12/12/2003"></property>  
+</bean> 
+<bean id="user1" class="com.javaspring.User">  
+<property name="id" value="1"></property>  
+<property name="name" value="Arun Kumar"></property>  
+<property name="email" value="arun@gmail.com"></property>  
+</bean>  
+<bean id="user2" class="com.javaspring.User">  
+<property name="id" value="2"></property>  
+<property name="name" value="Varun Kumar"></property>  
+<property name="email" value="Varun@gmail.com"></property>  
+</bean>  
+<bean id="q" class="com.javaspring.Question">  
+<property name="id" value="1"></property>  
+<property name="name" value="Write about Newyork?"></property> 
+<property name="answers">  
+<map>  
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>  
+</property> 
+</bean> 
+-->
+<!--SI for Map collection
 <bean id="ans1" class="com.javaspring.Answer">  
 <constructor-arg value="1"></constructor-arg>  
 <constructor-arg value="Newyork is in USA"></constructor-arg>  
@@ -25,7 +75,7 @@
 </map>  
 </property>  
 </bean> 
-
+-->
 <!--Setter Injection with Non-String Collection       
  <bean id="answer1" class="com.javaspring.Answer">  
 <property name="id" value="1"></property>  

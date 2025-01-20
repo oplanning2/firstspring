@@ -17,10 +17,17 @@ public static void main(String[] args) {
     //Employee s=(Employee)factory.getBean("e");  
     //s.show();
     
-    //Constructor injection with collection
-    Question q=(Question)factory.getBean("q");  
-    q.displayInfo(); 
+    //Constructor injection with collection 
+    //Question q=(Question)factory.getBean("q");  
+    //q.displayInfo(); 
     
+    
+    //Autowiring in Spring 
+   // A a=(A)factory.getBean("a");  
+    //a.display();
+    //Factory method in Spring 
+     A a=(A)factory.getBean("a");  
+    a.message();
     //Inheriting Bean in Spring
     //Employee e1=(Employee)factory.getBean("e2");  
     //e1.show();  

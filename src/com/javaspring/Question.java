@@ -17,10 +17,10 @@ public class Question {
 	//private List<Answer> answers;
 	
 	//constructor injection with Map
-	private Map<String,String> answers;  
+	//private Map<String,String> answers;  
 	
 	//constructor injection with Map
-	//private Map<Answer,User> answers;
+	private Map<Answer,User> answers;
 	
 	public Question() {
 		
@@ -57,7 +57,12 @@ public class Question {
 			return answers;
 		}*/
 	//Getter Injection with String  method
-			public Map<String,String> getAnswers() {
+			/*public Map<String,String> getAnswers() {
+				return answers;
+			}*/
+			
+	//getter injection with non String map
+			public Map<Answer,User> getAnswers() {
 				return answers;
 			}
 		//Setter Injection with String  method
@@ -66,7 +71,11 @@ public class Question {
 		}*/
 
 		//Setter Injection with Map(String)
-				public void setAnswers(Map<String,String> answers) {
+			/*	public void setAnswers(Map<String,String> answers) {
+					this.answers = answers;
+				}*/
+			//Setter Injection with non String Map	
+				public void setAnswers(Map<Answer,User> answers) {
 					this.answers = answers;
 				}
 	//constructor injection with string collection
@@ -86,20 +95,27 @@ public class Question {
 	}*/
 	
 	//constructor injection with map(using String)
-	public Question(int id, String name, Map<String,String> answers) {
+	/*public Question(int id, String name, Map<String,String> answers) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.answers = answers;
-	}
+	}*/
 	
-	//constructor injection with map
+	//constructor injection with non String collection
 		/*public Question(int id, String name, List<Answer,User> answers) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.answers = answers;
 		}*/
+				//constructor injection with non String Map
+				public Question(int id, String name, Map<Answer,User> answers) {
+					super();
+					this.id = id;
+					this.name = name;
+					this.answers = answers;
+				}
 	
 	public void displayInfo(){  
 	    System.out.println(id+" "+name);  
@@ -112,28 +128,28 @@ public class Question {
 	    // Iterator<Answer> itr=answers.iterator();
 	    
 	    // Iterator for Map collection
-	     Set<Entry<String, String>> set=answers.entrySet();  
-	     Iterator<Entry<String, String>> itr=set.iterator(); 
+	    // Set<Entry<String, String>> set=answers.entrySet();  
+	    // Iterator<Entry<String, String>> itr=set.iterator(); 
 	    
 	    // Iterator for non String Map collection
-	   // Set<Entry<Answer, User>> set=answers.entrySet();  
-	    //Iterator<Entry<Answer, User>> itr=set.iterator(); 
+	    Set<Entry<Answer, User>> set=answers.entrySet();  
+	   Iterator<Entry<Answer, User>> itr=set.iterator(); 
 	   
 	    while(itr.hasNext()){  
 	    	//printing for List collection
 	       //System.out.println(itr.next());
 	    	//printing for Map collection
-	        Entry<String,String> entry=itr.next();  
-	        System.out.println("Answer:"+entry.getKey()+" Posted By:"+entry.getValue());
+	       // Entry<String,String> entry=itr.next();  
+	        //System.out.println("Answer:"+entry.getKey()+" Posted By:"+entry.getValue());
 	    	
 	    	//printing for non String Map collection
-	      /*  Entry<Answer,User> entry=itr.next(); 
+	        Entry<Answer,User> entry=itr.next(); 
 	        Answer ans=entry.getKey();  
 	        User user=entry.getValue();  
 	        System.out.println("Answer Information:");  
 	        System.out.println(ans);  
 	        System.out.println("Posted By:");  
-	        System.out.println(user); */
+	        System.out.println(user); 
 	    }  
 	}
 	
